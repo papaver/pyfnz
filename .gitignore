@@ -1,0 +1,5 @@
+# python
+*.py[cod]
+
+# osx
+.DS_Store
