@@ -49,6 +49,22 @@ class TryTest(unittest.TestCase):
     # tests
     #--------------------------------------------------------------------------
 
+    def test_init(self):
+        """Test initilizing a Try.
+        """
+
+        failure      = lambda: 1 / 0
+        failure_args = lambda x, y=1 : x / y
+        success      = lambda: 1 + 1
+        success_args = lambda x, y=1: x + y
+
+        self.assertTrue(Try(failure).is_failure)
+        self.assertTrue(Try(failure, 1, y=0).is_failure)
+        self.assertTrue(Try(success).is_success)
+        self.assertTrue(Try(success_args, 1, y=2).is_success)
+
+    #--------------------------------------------------------------------------
+
     def test_slots(self):
         """Test slots directive is correctly working.
         """

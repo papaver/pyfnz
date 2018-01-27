@@ -85,12 +85,12 @@ class Try(object):
     # base
     #--------------------------------------------------------------------------
 
-    def __new__(cls, f):
+    def __new__(cls, f, *args, **kwargs):
         """Run f and wrap in Failure on exception otherwise in a Success.
         """
 
         try:
-            value = f()
+            value = f(*args, **kwargs)
             instance = object.__new__(Success)
             instance._value = value
         except Exception, e:
@@ -101,7 +101,7 @@ class Try(object):
 
     #--------------------------------------------------------------------------
 
-    def __init__(self, value):
+    def __init__(self, value, *args, **kwargs):
         """If class constructed from Try ignore the value passed in.
         """
 
