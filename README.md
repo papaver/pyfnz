@@ -63,3 +63,15 @@ Success(42)
            for y in safe_int('7'))
 Failure(ValueError("invalid literal for int() with base 10: 'a'",))
 ```
+
+## Pyjure
+
+Pythonic implementations of core *clojure* utilities are located in the `pyz.clj` module.
+
+## Testing
+
+All functions have associated tests to both validate functionality and demonstrate example usage and expected output.
+
+```shell
+python -m unittest discover -s tests
+```
