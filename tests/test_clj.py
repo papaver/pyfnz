@@ -170,6 +170,7 @@ class CoreTest(unittest.TestCase):
         self.assertEqual({'a':1, 'b':2}, merge(a, b))
         self.assertEqual({'a':1, 'b':2}, merge(a, None, b))
         self.assertEqual({'a':2, 'b':2, 'c':3}, merge(a, c, b))
+        self.assertEqual({'a':1, 'b':2, 'c':3}, merge(c, b, a))
 
     #--------------------------------------------------------------------------
 
