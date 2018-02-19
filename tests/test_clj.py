@@ -46,6 +46,20 @@ class CoreTest(unittest.TestCase):
     # tests
     #--------------------------------------------------------------------------
 
+    def test_is_some(self):
+        """Test checking if a value is not None.
+        """
+
+        self.assertTrue(is_some([]))
+        self.assertTrue(is_some({}))
+        self.assertTrue(is_some(set([])))
+        self.assertTrue(is_some(0))
+        self.assertTrue(is_some(0.0))
+        self.assertTrue(is_some(''))
+        self.assertFalse(is_some(None))
+
+    #--------------------------------------------------------------------------
+
     def test_is_empty(self):
         """Test checking a collection for emptiness.
         """
