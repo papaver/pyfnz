@@ -47,6 +47,7 @@ __all__ = ['is_some',
            'rest',
            'merge',
            'select_keys',
+           'some',
            'identity',
            'constantly']
 
@@ -152,6 +153,29 @@ def select_keys(dct, keys):
     """
 
     return dict(filter(lambda (k,v): k in keys, dct.iteritems()))
+
+#------------------------------------------------------------------------------
+
+def some(pred, lst):
+    """Returns the first logical true value of pred(x) for any x in lst, else
+    None.
+
+    Note: logical falses: False, None, '', [], (), {}, set(), 0, 0.0
+    """
+
+    #if not is_empty(lst):
+    #    return pred(first(lst)) or some(pred, nxt(lst))
+
+    # compensate for the fact python doesn't optimize tail recursion
+    while True:
+        if is_empty(lst):
+            return None
+        else:
+            value = pred(first(lst))
+            if value:
+                return value
+            else:
+                lst = nxt(lst)
 
 #------------------------------------------------------------------------------
 

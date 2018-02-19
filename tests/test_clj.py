@@ -190,6 +190,29 @@ class CoreTest(unittest.TestCase):
 
     #--------------------------------------------------------------------------
 
+    def test_some(self):
+        """Test returning first logical true value in a list.
+        """
+
+        is_a = lambda x: x == 'a'
+        fn_a = lambda x: x == 'a' and x
+
+        self.assertEqual(None, some(is_a, None))
+        self.assertEqual(None, some(is_a, []))
+        self.assertEqual(None, some(is_a, ['b']))
+        self.assertEqual(True, some(is_a, ['a']))
+        self.assertEqual(True, some(is_a, ['b', 'a']))
+        self.assertEqual(True, some(is_a, ['b', 'a', 'c']))
+
+        self.assertEqual(None, some(fn_a, None))
+        self.assertEqual(None, some(fn_a, []))
+        self.assertEqual(None, some(fn_a, ['b']))
+        self.assertEqual('a', some(fn_a, ['a']))
+        self.assertEqual('a', some(fn_a, ['b', 'a']))
+        self.assertEqual('a', some(fn_a, ['b', 'a', 'c']))
+
+    #--------------------------------------------------------------------------
+
     def test_identity(self):
         """Test identity function.
         """
