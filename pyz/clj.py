@@ -41,6 +41,7 @@ __all__ = ['is_empty',
            'second',
            'ffirst',
            'last',
+           'butlast',
            'nxt',
            'rest',
            'merge',
@@ -94,12 +95,21 @@ def last(lst):
 
 #------------------------------------------------------------------------------
 
+def butlast(lst):
+    """Return all but the last item in lst.
+    """
+
+    if lst is not None and len(lst) > 1:
+        return lst[:-1]
+
+#------------------------------------------------------------------------------
+
 def nxt(lst):
     """Returns a seq of the items after the first. If there are no more items,
     returns None.
     """
 
-    if lst is not None and len(lst) > 2:
+    if lst is not None and len(lst) > 1:
         return lst[1:]
 
 #------------------------------------------------------------------------------

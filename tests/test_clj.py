@@ -104,6 +104,18 @@ class CoreTest(unittest.TestCase):
 
     #--------------------------------------------------------------------------
 
+    def test_butlast(self):
+        """Test retrieving the all but the last element in list.
+        """
+
+        self.assertEqual(None, butlast(None))
+        self.assertEqual(None, butlast([]))
+        self.assertEqual(None, butlast([1]))
+        self.assertEqual([1], butlast([1, 2]))
+        self.assertEqual([1, 2], butlast([1, 2, 3]))
+
+    #--------------------------------------------------------------------------
+
     def test_nxt(self):
         """Test retrieving the all elements after the first, None if zero
         elements.
@@ -112,6 +124,7 @@ class CoreTest(unittest.TestCase):
         self.assertEqual(None, nxt(None))
         self.assertEqual(None, nxt([]))
         self.assertEqual(None, nxt([1]))
+        self.assertEqual([2], nxt([1, 2]))
         self.assertEqual([2, 3], nxt([1, 2, 3]))
 
     #--------------------------------------------------------------------------
