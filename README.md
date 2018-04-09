@@ -1,5 +1,5 @@
 # Pythonic Functional Constructs
-**pyz**'s goal is to offer pythonic implementations of functional programming constructs found in languages such as *haskell*, *scala*, and *clojure*.
+**pyfnz**'s goal is to offer pythonic implementations of functional programming constructs found in languages such as *haskell*, *scala*, and *clojure*.
 
 ## Category Theory
 * **Either**: An implementation of *scalaz*'s \\/.
@@ -66,7 +66,7 @@ Failure(ValueError("invalid literal for int() with base 10: 'a'",))
 
 ## Pyjure
 
-Pythonic implementations of core *clojure* utilities are located in the `pyz.clj` module.
+Pythonic implementations of core *clojure* utilities are located in the `pyfnz.clj` module.
 
 ## Testing
 

@@ -37,7 +37,7 @@ import unittest
 
 from functools import partial
 
-from pyz.tri import *
+from pyfnz.tri import *
 
 #------------------------------------------------------------------------------
 # test classes

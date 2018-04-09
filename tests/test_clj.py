@@ -34,7 +34,7 @@
 
 import unittest
 
-from pyz.clj import *
+from pyfnz.clj import *
 
 #------------------------------------------------------------------------------
 # test classes

@@ -34,7 +34,7 @@
 
 import unittest
 
-from pyz.either import *
+from pyfnz.either import *
 
 #------------------------------------------------------------------------------
 # test classes

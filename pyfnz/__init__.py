@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 # BSD 3-Clause License
 #
-# Copyright (c) 2018, Affirm
+# Copyright (c) 2018, Electronic Dreams, Inc
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
