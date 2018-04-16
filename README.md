@@ -68,6 +68,24 @@ Failure(ValueError("invalid literal for int() with base 10: 'a'",))
 
 Pythonic implementations of core *clojure* utilities are located in the `pyfnz.clj` module.
 
+## Installing
+
+The `pyfnz` package is available on [PyPi](https://pypi.org/project/pyfnz/).
+
+```shell
+pip install pyfnz
+```
+
+```shell
+$ python
+Python 2.7.10 (default, Jul 14 2015, 19:46:27)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pyfnz
+>>> pyfnz.Try(lambda: 1/0)
+Failure(ZeroDivisionError('integer division or modulo by zero',))
+```
+
 ## Testing
 
 All functions have associated tests to both validate functionality and demonstrate example usage and expected output.
