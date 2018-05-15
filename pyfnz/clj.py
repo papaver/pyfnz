@@ -109,7 +109,7 @@ def butlast(lst):
     """Return all but the last item in lst.
     """
 
-    if lst is not None and len(lst) > 1:
+    if is_some(lst) and len(lst) > 1:
         return lst[:-1]
 
 #------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ def nxt(lst):
     returns None.
     """
 
-    if lst is not None and len(lst) > 1:
+    if is_some(lst) and len(lst) > 1:
         return lst[1:]
 
 #------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ def rest(lst):
     """Returns a possibly empty seq of the items after the first.
     """
 
-    if lst is not None:
+    if is_some(lst):
         return lst[1:]
 
 #------------------------------------------------------------------------------
@@ -138,7 +138,7 @@ def merge(*args):
     first.
     """
 
-    ds = filter(lambda x: x is not None, args)
+    ds = filter(is_some, args)
     if not is_empty(ds):
         a = {}
         for d in ds:
