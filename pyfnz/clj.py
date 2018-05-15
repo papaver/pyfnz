@@ -152,7 +152,9 @@ def select_keys(dct, keys):
     keys.
     """
 
-    return dict(filter(lambda (k,v): k in keys, dct.iteritems()))
+    return {k:v
+            for k,v in dct.iteritems()
+                if k in keys}
 
 #------------------------------------------------------------------------------
 
