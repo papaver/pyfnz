@@ -50,7 +50,8 @@ __all__ = ['is_some',
            'select_keys',
            'some',
            'identity',
-           'constantly']
+           'constantly',
+           'comp']
 
 #------------------------------------------------------------------------------
 # functions
@@ -196,4 +197,23 @@ def constantly(x):
 
     def fn(*args, **kwargs):
         return x
+    return fn
+
+#------------------------------------------------------------------------------
+
+def comp(*fns):
+    """Takes a set of functions and returns a fn that is the composition of
+    those fns.  The returned fn takes a variable number of args, applies the
+    rightmost of fns to the args, the next fn (right-to-left) to the result,
+    etc.
+    """
+
+    if (is_empty(fns)):
+        return identity
+    elif len(fns) == 1:
+        return first(fns)
+
+    def fn(*args, **kwargs):
+        f, fs = last(fns), butlast(fns)
+        return reduce(lambda a, g: g(a), reversed(fs), f(*args, **kwargs))
     return fn

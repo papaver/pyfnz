@@ -247,3 +247,24 @@ class CoreTest(unittest.TestCase):
         self.assertEqual('a', lmb()())
         self.assertEqual('a', lmb(1)())
         self.assertEqual('a', lmb(1, x=2)())
+
+    #--------------------------------------------------------------------------
+
+    def test_comp(self):
+        """Test composing functions together.
+        """
+
+        join   = lambda xs: "".join(map(str, xs))
+        joind  = lambda xs, d: d.join(map(str, xs))
+
+        ident = comp()
+        f     = comp(reversed)
+        fg    = comp(list, reversed)
+        fgh   = comp(join, list, reversed)
+        fghi  = comp(join, list, reversed, joind)
+
+        self.assertEqual('a', ident('a'))
+        self.assertEqual([3, 2, 1], list(f([1, 2, 3])))
+        self.assertEqual(['d', 'c', 'b', 'a'], fg("abcd"))
+        self.assertEqual("dcba", fgh("abcd"))
+        self.assertEqual("d.c.b.a", fghi(['a', 'b', 'c', 'd'], "."))
