@@ -34,8 +34,6 @@
 
 import abc
 
-from functools import partial
-
 from either import Left, Right
 
 #------------------------------------------------------------------------------
@@ -262,7 +260,7 @@ class Try(object):
         """
 
         if type(self) is Failure:
-            return Try(partial(f, self._value))
+            return Try(f, self._value)
         elif type(self) is Success:
             return self
 
@@ -288,7 +286,7 @@ class Try(object):
         if type(self) is Failure:
             return self
         elif type(self) is Success:
-            return Try(partial(f, self._value))
+            return Try(f, self._value)
 
     #- Monad ------------------------------------------------------------------
 
