@@ -35,7 +35,7 @@
 
 import abc
 
-from either import Left, Right
+from .either import Left, Right
 
 #------------------------------------------------------------------------------
 # module
@@ -92,7 +92,7 @@ class Try(object):
             value = f(*args, **kwargs)
             instance = object.__new__(Success)
             instance._value = value
-        except Exception, e:
+        except Exception as e:
             instance = object.__new__(Failure)
             instance._value = e
 

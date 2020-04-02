@@ -32,5 +32,5 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #------------------------------------------------------------------------------
 
-from either import Either, Left, Right
-from tri import Try
+from .either import Either, Left, Right
+from .tri import Try
