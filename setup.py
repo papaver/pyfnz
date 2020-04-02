@@ -40,7 +40,7 @@ from setuptools import setup
 
 setup(
     name='pyfnz',
-    version='0.1.0',
+    version='0.1.1',
     description='Pythonic Functional Constructs',
     author='Moiz Merchant',
     author_email='moiz@electronicdreams.io',
@@ -51,4 +51,5 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 2.7'
+        'Programming Language :: Python :: 3.7'
     ])
