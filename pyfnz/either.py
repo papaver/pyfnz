@@ -264,7 +264,7 @@ class Either(object):
         """
 
         # prevent circular imports
-        from tri import Failure, Success
+        from .tri import Failure, Success
 
         if type(self) is Left:
             return Failure(self._value)

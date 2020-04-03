@@ -33,6 +33,10 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #------------------------------------------------------------------------------
 
+import sys
+
+from functools import reduce
+
 #------------------------------------------------------------------------------
 # module
 #------------------------------------------------------------------------------
@@ -52,6 +56,12 @@ __all__ = ['is_some',
            'identity',
            'constantly',
            'comp']
+
+#------------------------------------------------------------------------------
+# helper functions
+#------------------------------------------------------------------------------
+
+is_python3 = sys.version_info > (3, 0)
 
 #------------------------------------------------------------------------------
 # functions
@@ -140,7 +150,7 @@ def merge(*args):
     first.
     """
 
-    ds = filter(is_some, args)
+    ds = tuple(filter(is_some, args))
     if not is_empty(ds):
         a = {}
         for d in ds:
@@ -149,13 +159,24 @@ def merge(*args):
 
 #------------------------------------------------------------------------------
 
-def select_keys(dct, keys):
+def select_keys_py2(dct, keys):
     """Returns a dict containing only those entries in dict whose key is in
     keys.
     """
 
     return {k:v
             for k,v in dct.iteritems()
+                if k in keys}
+
+#------------------------------------------------------------------------------
+
+def select_keys_py3(dct, keys):
+    """Returns a dict containing only those entries in dict whose key is in
+    keys.
+    """
+
+    return {k:v
+            for k,v in dct.items()
                 if k in keys}
 
 #------------------------------------------------------------------------------
@@ -217,3 +238,9 @@ def comp(*fns):
         f, fs = last(fns), butlast(fns)
         return reduce(lambda a, g: g(a), reversed(fs), f(*args, **kwargs))
     return fn
+
+#------------------------------------------------------------------------------
+# compatability
+#------------------------------------------------------------------------------
+
+select_keys = is_python3 and select_keys_py3 or select_keys_py3
