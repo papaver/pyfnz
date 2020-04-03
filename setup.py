@@ -40,7 +40,7 @@ from setuptools import setup
 
 setup(
     name='pyfnz',
-    version='0.1.1',
+    version='0.1.2',
     description='Pythonic Functional Constructs',
     author='Moiz Merchant',
     author_email='moiz@electronicdreams.io',
