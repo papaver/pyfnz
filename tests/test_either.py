@@ -35,6 +35,7 @@
 import unittest
 
 from pyfnz.either import *
+from pyfnz import clj
 
 #------------------------------------------------------------------------------
 # test classes
@@ -374,6 +375,32 @@ class EitherTest(unittest.TestCase):
         self.assertEqual(1, ~left_result | 0)
         self.assertEqual(14, right1_result | 0)
         self.assertEqual(7, ~right2_result | 0)
+
+    #--------------------------------------------------------------------------
+
+    def test_applicative_laws(self):
+        """Test the applicative laws hold for Either.
+        """
+
+        pure = Either.pure
+
+        def identity(u, id):
+            self.assertEqual(u.ap(pure(id)), u)
+
+        def homomorphism(f, x):
+            self.assertEqual(pure(x).ap(pure(f)), pure(f(x)))
+
+        def interchange(F, x):
+            self.assertEqual(pure(x).ap(F), F.ap(pure(lambda f: f(x))))
+
+        # composition
+        def makelike(x, f):
+            self.assertEqual(pure(x).map(f), pure(x).ap(pure(f)))
+
+        identity(Right(str), clj.identity)
+        homomorphism(str, 5)
+        interchange(Right(str), 5)
+        makelike(5, str)
 
     #--------------------------------------------------------------------------
 
